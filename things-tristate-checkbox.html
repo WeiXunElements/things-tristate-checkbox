@@ -39,11 +39,9 @@ Custom property | Description | Default
     <style>
       :host {
         display: inline-block;
-        white-space: nowrap;
         cursor: pointer;
-        --calculated-tristate-checkbox-size: var(--tristate-checkbox-size, 18px);
-        @apply(--paper-font-common-base);
-        line-height: 0;
+        min-height:36px;
+        padding-left:calc(26% + 5px);
       }
       :host(:focus) {
         outline: none;
@@ -52,41 +50,34 @@ Custom property | Description | Default
         display: none;
       }
       #checkboxContainer {
-        display: inline-block;
         position: relative;
-        width: var(--calculated-tristate-checkbox-size);
-        height: var(--calculated-tristate-checkbox-size);
-        min-width: var(--calculated-tristate-checkbox-size);
+        display: inline-block;
+        width: var(--things-tristate-size);
+        height: var(--things-tristate-size);
+        min-width: var(--things-tristate-size);
         vertical-align: middle;
-        background-color: var(--tristate-checkbox-unchecked-background-color, transparent);
+        background-color: var(--things-tristate-unchecked-background-color);
       }
       #ink {
         position: absolute;
         /* Center the ripple in the checkbox by negative offsetting it by
          * (inkWidth - rippleWidth) / 2 
          */
-        top: calc(0px - (2.66 * var(--calculated-tristate-checkbox-size) - var(--calculated-tristate-checkbox-size)) / 2);
-        left: calc(0px - (2.66 * var(--calculated-tristate-checkbox-size) - var(--calculated-tristate-checkbox-size)) / 2);
-        width: calc(2.66 * var(--calculated-tristate-checkbox-size));
-        height: calc(2.66 * var(--calculated-tristate-checkbox-size));
-        color: var(--tristate-checkbox-unchecked-ink-color, --primary-text-color);
-        opacity: 0.6;
-        pointer-events: none;
+        top: calc(0px - (2.66 * var(--things-tristate-size) - var(--things-tristate-size)) / 2);
+        left: calc(0px - (2.66 * var(--things-tristate-size) - var(--things-tristate-size)) / 2);
+        width: calc(2.66 * var(--things-tristate-size));
+        height: calc(2.66 * var(--things-tristate-size));
       }
       :host-context([dir="rtl"]) #ink {
-        right: calc(0px - (2.66 * var(--calculated-tristate-checkbox-size) - var(--calculated-tristate-checkbox-size)) / 2);
+        right: calc(0px - (2.66 * var(--things-tristate-size) - var(--things-tristate-size)) / 2);
         left: auto;
-      }
-      #ink[checked] {
-        color: var(--tristate-checkbox-checked-ink-color, --primary-color);
       }
       #checkbox {
         position: relative;
         box-sizing: border-box;
         width: 100%;
         height: 100%;
-        border: solid 2px;
-        border-color: var(--tristate-checkbox-unchecked-color, --primary-text-color);
+        border: solid 2px var(--paper-grey-400);
         border-radius: 2px;
         pointer-events: none;
         -webkit-transition: background-color 140ms, border-color 140ms;
@@ -135,8 +126,8 @@ Custom property | Description | Default
         }
       }
       #checkbox.checked {
-        background-color: var(--tristate-checkbox-checked-color, --primary-color);
-        border-color: var(--tristate-checkbox-checked-color, --primary-color);
+        background-color: var(--things-focus-background-color);
+        border-color: var(--things-focus-background-color);
       }
       #checkmark {
         position: absolute;
@@ -145,9 +136,9 @@ Custom property | Description | Default
         border-style: solid;
         border-top: none;
         border-left: none;
-        border-right-width: calc(2/15 * var(--calculated-tristate-checkbox-size));
-        border-bottom-width: calc(2/15 * var(--calculated-tristate-checkbox-size));
-        border-color: var(--tristate-checkbox-checkmark-color, white);
+        border-right-width: calc(2/15 * var(--things-tristate-size));
+        border-bottom-width: calc(2/15 * var(--things-tristate-size));
+        border-color: var(--things-white-background-color, white);
         -webkit-transform-origin: 97% 86%;
         transform-origin: 97% 86%;
         box-sizing: content-box; /* protect against page-level box-sizing */
@@ -163,9 +154,9 @@ Custom property | Description | Default
         border-style: solid;
         border-top: none;
         border-left: none;
-        border-right-width: calc(2/15 * var(--calculated-tristate-checkbox-size));
-        border-bottom-width: calc(2/15 * var(--calculated-tristate-checkbox-size));
-        border-color: var(--tristate-checkbox-checkmark-color, white);
+        border-right-width: calc(2/15 * var(--things-tristate-size));
+        border-bottom-width: calc(2/15 * var(--things-tristate-size));
+        border-color: var(--things-white-background-color, white);
         -webkit-transform-origin: 60% 200%;
         transform-origin: 60% 200%;
         box-sizing: content-box; /* protect against page-level box-sizing */
@@ -176,13 +167,11 @@ Custom property | Description | Default
       }
       /* label */
       #checkboxLabel {
-        position: relative;
         display: inline-block;
-        vertical-align: middle;
-        padding-left: var(--tristate-checkbox-label-spacing, 8px);
-        white-space: normal;
-        line-height: normal;
-        color: var(--tristate-checkbox-label-color, --primary-text-color);
+        padding-left:3px;
+        color:var(--things-primary-text-color);
+        font-size:13px;
+        font-weight:200;
       }
       :host-context([dir="rtl"]) #checkboxLabel {
         padding-right: var(--tristate-checkbox-label-spacing, 8px);
@@ -194,14 +183,14 @@ Custom property | Description | Default
       /* disabled state */
       :host([disabled]) #checkbox {
         opacity: 0.5;
-        border-color: var(--tristate-checkbox-unchecked-color, --primary-text-color);
+        border-color: var(--things-tristate-unchecked-background-color);
       }
       :host([disabled][checked]) #checkbox {
-        background-color: var(--tristate-checkbox-unchecked-color, --primary-text-color);
+        background-color: var(--things-tristate-unchecked-background-color);
         opacity: 0.5;
       }
       :host([disabled][indeterminate]) #checkbox {
-        background-color: var(--tristate-checkbox-unchecked-color, --primary-text-color);
+        background-color: var(--things-tristate-unchecked-background-color);
         opacity: 0.5;
       }
       :host([disabled]) #checkboxLabel  {
@@ -209,7 +198,7 @@ Custom property | Description | Default
       }
       /* invalid state */
       #checkbox.invalid:not(.checked) {
-        border-color: var(--tristate-checkbox-error-color, --google-red-500);
+        border-color: var(--things-tristate-unchecked-background-color);
       }
     </style>
 
