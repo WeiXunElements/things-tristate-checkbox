@@ -21,7 +21,7 @@ subject to an additional IP rights grant found at https://github.com/ThingsEleme
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 
   <link rel="import" href="../../paper-input/paper-input.html">
-  
+
   <link rel="import" href="../things-tristate-checkbox.html">
 
   <style is="custom-style">
@@ -64,10 +64,12 @@ subject to an additional IP rights grant found at https://github.com/ThingsEleme
   <demo-snippet class="centered-demo">
     <template>
       <sample-tristate-checkbox></sample-tristate-checkbox>
-
+      <things-tristate-checkbox>label</things-tristate-checkbox>
+      <things-tristate-checkbox state="on">label</things-tristate-checkbox>
+      
       <dom-module id="sample-tristate-checkbox">
         <template>
-          <things-tristate-checkbox 
+          <things-tristate-checkbox
             id="tristate-checkbox"
             label="Tristate Checkbox"
             state="{{state}}">
