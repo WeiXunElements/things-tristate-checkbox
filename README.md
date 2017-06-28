@@ -1,7 +1,6 @@
 # things-tristate-checkbox
 
-tristate-checkbox
-`tristate-checkbox`는[`paper-checkbox`](https://elements.polymer-project.org/elements/paper-checkbox)와 유사한 web component이다.
+This is a web component similar to [`paper-checkbox`](https://elements.polymer-project.org/elements/paper-checkbox).
 
 Example:
 
@@ -10,27 +9,28 @@ Example:
     <things-tristate-checkbox state="on">label</things-tristate-checkbox>
 ```
 
-web component는 W3C의[WAI-ARIA 1.0 Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#checkbox)에 따라 'aria-checked'속성을 처리합니다.
+The web component handles 'aria-checked' attribute according to W3C's [WAI-ARIA 1.0 Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#checkbox).
 
 ### Styling
 The following custom properties and mixins are available for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--things-tristate-unchecked-background-color` | input에 체크되어 있지 않을 때 checkbox의 배경 색 | `transparent`
-`--things-tristate-unchecked-color` | input에 체크되어 있지 않을 때 Checkbox border 색 | `--primary-text-color`
-`--things-tristate-unchecked-ink-color` | input에 체크되어 있지 않을 때 Selected/focus ripple 색 | `--primary-text-color`
-`--things-tristate-checked-color` | input에 체크되어 있을 때 Checkbox 색 | `--primary-color`
-`--things-tristate-checked-ink-color` | input에 체크되어 있을 때 Selected/focus ripple 색 | `--primary-color`
-`--things-tristate-checkmark-color` | Checkmark 색 | `white`
-`--things-tristate-label-color` | Label 색 | `--primary-text-color`
-`--things-tristate-label-spacing` | label과 checkbox사이의 공간 | `8px`
-`--things-tristate-error-color` | invalid상태 때 Checkbox 색 | `--error-color`
-`--things-tristate-size` | checkbox의 사이즈 | `18px`
+`--things-tristate-unchecked-background-color` | Checkbox background color when input is not checked | `transparent`
+`--things-tristate-unchecked-color` | Checkbox border color when input is not checked | `--primary-text-color`
+`--things-tristate-unchecked-ink-color` | Selected/focus ripple color when input is not checked
+ | `--primary-text-color`
+`--things-tristate-checked-color` | Checkbox color when input is checked | `--primary-color`
+`--things-tristate-checked-ink-color` | Selected/focus ripple color when input is checked | `--primary-color`
+`--things-tristate-checkmark-color` | Checkmark color | `white`
+`--things-tristate-label-color` | Label color | `--primary-text-color`
+`--things-tristate-label-spacing` | The space between label and checkbox | `8px`
+`--things-tristate-error-color` | Checkbox color when invalid | `--error-color`
+`--things-tristate-size` | Checkbox size | `18px`
 
 #### From `paper-checkbox` __:__
-> 이 element는 `--paper-font-common-base`을 적용하지만 `paper-styles/typography.html`을 import하지 않는다.
-> 이 element에 'Roboto' 폰트를 적용하려면, `paper-styles/typography.html`를 가져왔는지 확인해야한다.
+> This element applies `--paper-font-common-base` but does not import `paper-styles/typography.html`.
+> To apply 'Roboto' font to this element, make sure you have imported `paper-styles/typography.html`.
 
 Example:
 
@@ -73,8 +73,7 @@ Example:
 
 ## Dependencies
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+Element dependencies are managed via [Bower](http://bower.io/). You can install that via:
 
     npm install -g bower
 
@@ -97,7 +96,3 @@ And you can run it via:
 
 Once running, you can preview your element at
 `http://localhost:8080/components/things-tristate-checkbox/`, where `things-tristate-checkbox` is the name of the directory containing it.
-
-
-## Example 1. Things tristate checkbox
-`<things-tristate-checkbox>` Things Tristate checkbox
