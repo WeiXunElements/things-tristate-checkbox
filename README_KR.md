@@ -72,7 +72,7 @@ Example:
 
 ## Dependencies
 
-Eelement의 종속성은 [Bower](http://bower.io/)를 통해 관리되며, 아래의 방법을 통해 설치할 수 있다.
+Element의 종속성은 [Bower](http://bower.io/)를 통해 관리되며, 아래의 방법을 통해 설치할 수 있다.
 
     npm install -g bower
 
