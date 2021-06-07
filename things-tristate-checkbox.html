@@ -1,12 +1,12 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-validatable-behavior/iron-validatable-behavior.html">
-<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
-<link rel="import" href="../paper-behaviors/paper-inky-focus-behavior.html">
-<link rel="import" href="../paper-styles/default-theme.html">
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../iron-validatable-behavior/iron-validatable-behavior.html" />
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html" />
+<link rel="import" href="../paper-behaviors/paper-inky-focus-behavior.html" />
+<link rel="import" href="../paper-styles/default-theme.html" />
 
 <!--
 ## tristate-checkbox
@@ -84,13 +84,13 @@ Example:
 -->
 
 <dom-module id="things-tristate-checkbox">
-    <template>
+  <template>
     <style>
       :host {
         display: inline-block;
         cursor: pointer;
-        min-height:31px;
-        margin-top:3px;
+        min-height: 31px;
+        margin-top: 3px;
       }
       :host(:focus) {
         outline: none;
@@ -104,7 +104,7 @@ Example:
         width: var(--things-tristate-size);
         height: var(--things-tristate-size);
         min-width: var(--things-tristate-size);
-        margin-left:30px;
+        margin-left: 30px;
         vertical-align: middle;
         background-color: var(--things-tristate-unchecked-background-color);
       }
@@ -118,7 +118,7 @@ Example:
         width: calc(2.66 * var(--things-tristate-size));
         height: calc(2.66 * var(--things-tristate-size));
       }
-      :host-context([dir="rtl"]) #ink {
+      :host-context([dir='rtl']) #ink {
         right: calc(0px - (2.66 * var(--things-tristate-size) - var(--things-tristate-size)) / 2);
         left: auto;
       }
@@ -186,14 +186,14 @@ Example:
         border-style: solid;
         border-top: none;
         border-left: none;
-        border-right-width: calc(2/15 * var(--things-tristate-size));
-        border-bottom-width: calc(2/15 * var(--things-tristate-size));
+        border-right-width: calc(2 / 15 * var(--things-tristate-size));
+        border-bottom-width: calc(2 / 15 * var(--things-tristate-size));
         border-color: var(--things-white-background-color, white);
         -webkit-transform-origin: 97% 86%;
         transform-origin: 97% 86%;
         box-sizing: content-box; /* protect against page-level box-sizing */
       }
-      :host-context([dir="rtl"]) #checkmark {
+      :host-context([dir='rtl']) #checkmark {
         -webkit-transform-origin: 50% 14%;
         transform-origin: 50% 14%;
       }
@@ -204,26 +204,26 @@ Example:
         border-style: solid;
         border-top: none;
         border-left: none;
-        border-right-width: calc(2/15 * var(--things-tristate-size));
-        border-bottom-width: calc(2/15 * var(--things-tristate-size));
+        border-right-width: calc(2 / 15 * var(--things-tristate-size));
+        border-bottom-width: calc(2 / 15 * var(--things-tristate-size));
         border-color: var(--things-white-background-color, white);
         -webkit-transform-origin: 60% 200%;
         transform-origin: 60% 200%;
         box-sizing: content-box; /* protect against page-level box-sizing */
       }
-      :host-context([dir="rtl"]) #indeterminatemark {
+      :host-context([dir='rtl']) #indeterminatemark {
         -webkit-transform-origin: 50% 14%;
         transform-origin: 50% 14%;
       }
       /* label */
       #checkboxLabel {
         display: inline-block;
-        padding-left:3px;
-        color:var(--things-primary-text-color);
-        font-size:13px;
-        font-weight:200;
+        padding-left: 3px;
+        color: var(--things-primary-text-color);
+        font-size: 13px;
+        font-weight: 200;
       }
-      :host-context([dir="rtl"]) #checkboxLabel {
+      :host-context([dir='rtl']) #checkboxLabel {
         padding-right: var(--things-tristate-label-spacing, 8px);
         padding-left: 0;
       }
@@ -243,7 +243,7 @@ Example:
         background-color: var(--things-tristate-unchecked-background-color);
         opacity: 0.5;
       }
-      :host([disabled]) #checkboxLabel  {
+      :host([disabled]) #checkboxLabel {
         opacity: 0.65;
       }
       /* invalid state */
@@ -263,192 +263,188 @@ Example:
     <paper-input name="[[name]]" value="{{value}}" hidden></paper-input>
   </template>
 
-    <script>
-        Polymer({
-            is: 'things-tristate-checkbox',
-            listeners: {
-                'tap': '_regularTap'
-            },
-            behaviors: [
-                Polymer.IronFormElementBehavior,
-                Polymer.IronValidatableBehavior,
-                Polymer.PaperInkyFocusBehavior
-            ],
-            hostAttributes: {
-                role: 'checkbox',
-                'aria-checked': 'mixed',
-                tabindex: 0
-            },
-            properties: {
-                /**
-                 * en-us
-                 *
-                 * Fired when the checked state changes due to user interaction.
-                 ******
-                 * ko-kr
-                 *
-                 * 사용자 상호작용으로 인해 선택된 상태가 변경되면 시작됩니다.
-                 ******
-                 * @event change
-                 */
-                /**
-                 * en-us
-                 *
-                 * Fired when the checked state changes.
-                 ******
-                 * ko-kr
-                 *
-                 * 선택한 상태가 변경 될 때 일어남
-                 ******
-                 * @event iron-change
-                 */
-                ariaActiveAttribute: {
-                    type: String,
-                    value: 'aria-checked'
-                },
-                /**
-                 * en-us
-                 *
-                 * There are three possible states: `'on'`, `'off'`, and `null`.
-                 ******
-                 *
-                 * ko-kr
-                 *
-                 * 가능한 3가지 상태 : 'on', 'off', null
-                 ******
-                 *@type: String
-                 */
-                state: {
-                    type: String,
-                    value: null,
-                    reflectToAttribute: true,
-                    notify: true
-                },
-                /**
-                 * en-us
-                 *
-                 * The element's value when `'on'`/checked.
-                 ******
-                 *
-                 * ko-kr
-                 *
-                 * 'on'에 체크되어 있을 때 element의 값
-                 ******
-                 *@type: String
-                 */
-                checked: {
-                    type: String,
-                    value: "x"
-                },
-                /**
-                 * en-us
-                 *
-                 * The element's value when `'off'`/unchecked.
-                 ******
-                 *
-                 * ko-kr
-                 *
-                 * 'off'에 체크되어 있지 않을 때 element의 값
-                 ******
-                 *@type: String
-                 */
-                unchecked: {
-                    type: String,
-                    value: " "
-                },
-                /**
-                 * en-us
-                 *
-                 * The element's value when `null`/indeterminate.
-                 ******
-                 *
-                 * ko-kr
-                 *
-                 * 'null'인지 불확정 할때 element의 값
-                 ******
-                 *@type: String
-                 */
-                indeterminate: {
-                    type: String,
-                    value: ""
-                },
-                /**
-                 * en-us
-                 *
-                 * The element's value based on its current state.
-                 ******
-                 *
-                 * ko-kr
-                 *
-                 * 현재 상태에 기초한 element의 값
-                 *
-                 ******
-                 *@type: String
-                 */
-                value: {
-                    type: String,
-                    notify: true,
-                    computed: '_computeValue(state)',
-                    observer: '_valueChanged'
-                },
+  <script>
+    Polymer({
+      is: 'things-tristate-checkbox',
+      listeners: {
+        tap: '_regularTap',
+      },
+      behaviors: [Polymer.IronFormElementBehavior, Polymer.IronValidatableBehavior, Polymer.PaperInkyFocusBehavior],
+      hostAttributes: {
+        role: 'checkbox',
+        'aria-checked': 'mixed',
+        tabindex: 0,
+      },
+      properties: {
+        /**
+         * en-us
+         *
+         * Fired when the checked state changes due to user interaction.
+         ******
+         * ko-kr
+         *
+         * 사용자 상호작용으로 인해 선택된 상태가 변경되면 시작됩니다.
+         ******
+         * @event change
+         */
+        /**
+         * en-us
+         *
+         * Fired when the checked state changes.
+         ******
+         * ko-kr
+         *
+         * 선택한 상태가 변경 될 때 일어남
+         ******
+         * @event iron-change
+         */
+        ariaActiveAttribute: {
+          type: String,
+          value: 'aria-checked',
+        },
+        /**
+         * en-us
+         *
+         * There are three possible states: `'on'`, `'off'`, and `null`.
+         ******
+         *
+         * ko-kr
+         *
+         * 가능한 3가지 상태 : 'on', 'off', null
+         ******
+         *@type: String
+         */
+        state: {
+          type: String,
+          value: null,
+          reflectToAttribute: true,
+          notify: true,
+        },
+        /**
+         * en-us
+         *
+         * The element's value when `'on'`/checked.
+         ******
+         *
+         * ko-kr
+         *
+         * 'on'에 체크되어 있을 때 element의 값
+         ******
+         *@type: String
+         */
+        checked: {
+          type: String,
+          value: 'x',
+        },
+        /**
+         * en-us
+         *
+         * The element's value when `'off'`/unchecked.
+         ******
+         *
+         * ko-kr
+         *
+         * 'off'에 체크되어 있지 않을 때 element의 값
+         ******
+         *@type: String
+         */
+        unchecked: {
+          type: String,
+          value: ' ',
+        },
+        /**
+         * en-us
+         *
+         * The element's value when `null`/indeterminate.
+         ******
+         *
+         * ko-kr
+         *
+         * 'null'인지 불확정 할때 element의 값
+         ******
+         *@type: String
+         */
+        indeterminate: {
+          type: String,
+          value: '',
+        },
+        /**
+         * en-us
+         *
+         * The element's value based on its current state.
+         ******
+         *
+         * ko-kr
+         *
+         * 현재 상태에 기초한 element의 값
+         *
+         ******
+         *@type: String
+         */
+        value: {
+          type: String,
+          notify: true,
+          computed: '_computeValue(state)',
+          observer: '_valueChanged',
+        },
 
-                /**
-                 * label
-                 * ******
-                 * @type: String
-                 */
-                label: {
-                    type: String
-                }
-            },
-            /**
-             * JavaScript에서 이러한 element 생성.
-             *******
-             * @param {String} label 이 element의 label.
-             * @param {String} state 이 element의 상태. Allowable values are
-             * `'on'`/checked, `'off'`/unchecked, and `null`/indeterminate. All
-             * other values are treated as `null`.
-             */
-            factoryImpl: function(label, state) {
-                this.$.checkboxLabel.innerHTML = label;
-                if (state == 'on' || state == 'off') {
-                    this.state = state;
-                } else {
-                    state = null;
-                }
-            },
+        /**
+         * label
+         * ******
+         * @type: String
+         */
+        label: {
+          type: String,
+        },
+      },
+      /**
+       * JavaScript에서 이러한 element 생성.
+       *******
+       * @param {String} label 이 element의 label.
+       * @param {String} state 이 element의 상태. Allowable values are
+       * `'on'`/checked, `'off'`/unchecked, and `null`/indeterminate. All
+       * other values are treated as `null`.
+       */
+      factoryImpl: function (label, state) {
+        this.$.checkboxLabel.innerHTML = label;
+        if (state == 'on' || state == 'off') {
+          this.state = state;
+        } else {
+          state = null;
+        }
+      },
 
-            _valueChanged: function(value) {
-                if (value === true || value === 'true') {
-                    this.state = 'on';
-                } else if (value === false || value === 'false') {
-                    this.state = 'off';
-                } else {
-                    this.state = null;
-                }
-            },
+      _valueChanged: function (value) {
+        if (value === true || value === 'true') {
+          this.state = 'on';
+        } else if (value === false || value === 'false') {
+          this.state = 'off';
+        } else {
+          this.state = null;
+        }
+      },
 
-            // Computed methods.
-            _computeValue: function(state) {
-                if (state == 'on') {
-                    this.setAttribute(this.ariaActiveAttribute, 'true');
-                    //return this.checked;
-                    return 'true';
-                } else if (state == 'off') {
-                    this.setAttribute(this.ariaActiveAttribute, 'false');
-                    //return this.unchecked;
-                    return 'false';
-                } else {
-                    this.setAttribute(this.ariaActiveAttribute, 'mixed');
-                    // indeterminate can become undefined, so force empty string
-                    //return this.indeterminate ? this.indeterminate : "";
-                    return null;
-                }
-            },
-            // Element Behavior
-            // Rotate through the state values.
-            _regularTap: function(e) {
-                /**
+      // Computed methods.
+      _computeValue: function (state) {
+        if (state == 'on') {
+          this.setAttribute(this.ariaActiveAttribute, 'true');
+          //return this.checked;
+          return 'true';
+        } else if (state == 'off') {
+          this.setAttribute(this.ariaActiveAttribute, 'false');
+          //return this.unchecked;
+          return 'false';
+        } else {
+          this.setAttribute(this.ariaActiveAttribute, 'mixed');
+          // indeterminate can become undefined, so force empty string
+          //return this.indeterminate ? this.indeterminate : "";
+          return null;
+        }
+      },
+      // Element Behavior
+      // Rotate through the state values.
+      _regularTap: function (e) {
+        /**
                  * updated by cuiguang - 2018.06.06
                  * 因项目需求，状态值改为on/off形式
                  *************************
@@ -461,38 +457,38 @@ Example:
                 }
                 **/
 
-                if (this.state == 'on') {
-                    this.state = 'off';
-                } else {
-                    this.state = 'on';
-                }
-            },
-            _computeCheckboxClass: function(state) {
-                if (state == 'on' || state == null) {
-                    return 'checked';
-                } else {
-                    return '';
-                };
-            },
-            _computeCheckmarkClass: function(state) {
-                if (state == 'off' || state == null) {
-                    return 'hidden';
-                } else {
-                    return '';
-                }
-            },
-            _computeIndeterminatemarkClass: function(state) {
-                if (state == 'off' || state == 'on') {
-                    return 'hidden';
-                } else {
-                    return '';
-                }
-            },
-            // create ripple inside the checkboxContainer
-            _createRipple: function() {
-                this._rippleContainer = this.$.checkboxContainer;
-                return Polymer.PaperInkyFocusBehaviorImpl._createRipple.call(this);
-            }
-        });
-    </script>
+        if (this.state == 'on') {
+          this.state = 'off';
+        } else {
+          this.state = 'on';
+        }
+      },
+      _computeCheckboxClass: function (state) {
+        if (state == 'on' || state == null) {
+          return 'checked';
+        } else {
+          return '';
+        }
+      },
+      _computeCheckmarkClass: function (state) {
+        if (state == 'off' || state == null) {
+          return 'hidden';
+        } else {
+          return '';
+        }
+      },
+      _computeIndeterminatemarkClass: function (state) {
+        if (state == 'off' || state == 'on') {
+          return 'hidden';
+        } else {
+          return '';
+        }
+      },
+      // create ripple inside the checkboxContainer
+      _createRipple: function () {
+        this._rippleContainer = this.$.checkboxContainer;
+        return Polymer.PaperInkyFocusBehaviorImpl._createRipple.call(this);
+      },
+    });
+  </script>
 </dom-module>

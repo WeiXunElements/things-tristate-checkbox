@@ -1,8 +1,8 @@
 {
     "name": "things-tristate-checkbox",
-    "version": "v2.2.1",
+    "version": "v2.2.2",
     "authors": [
-        "Hatio Lab. <heartyoh@hatiolab.com>"
+        "Shenzhen Weixun"
     ],
     "description": "tristate-checkbox을 제공하는 element.",
     "keywords": [
@@ -11,8 +11,6 @@
         "seed"
     ],
     "main": "things-tristate-checkbox.html",
-    "license": "http://license.hatiolab.com/EULA",
-    "homepage": "http://elements.hatiolab.com/",
     "ignore": [
         "/.*",
         "/test/"
